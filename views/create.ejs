@@ -1,0 +1,40 @@
+<%- include("partials/header.ejs") %>
+
+<%if (locals.postID) { %>
+    <% var author = currentPost.author; %>
+    <% var title = currentPost.title; %>
+    <% var text = currentPost.text; %>
+    <% var action = "/submit-update"; %>   
+    <% var pagetitle = "Update"; %>
+<% } else {%>
+    <% var author = ""; %>
+    <% var title = ""; %>
+    <% var text = ""; %>
+    <% var action = "/submit"; %>
+    <% postID = "" ;%>
+    <% var pagetitle = "Create New"; %>
+<% } %>
+<div class="container py-5">
+<h1 class="py-3"> <strong><%=pagetitle %> Post </strong></h1>
+<form action=<%=action %> method="POST">
+    <div class="mb-3">
+      <label for="author-input" class="form-label">Author: </label>
+      <input type="text" class="form-control" id="author-input" name="blogAuthor" value=<%=author%>>
+      <div id="emailHelp" class="form-text">This is how you will be referred to on the post, pick any name!</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="title-input" class="form-label">Title: </label>
+      <input type="text" class="form-control" id="title-input" name="blogTitle" value=<%=title%>>
+    </div>
+
+    <div class="mb-3">
+        <label for="blog-text" class="form-label">Text: </label>
+        <textarea class="form-control" id="blog-text" rows="5" name="blogText"><%=text%></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary" name="postID" value=<%=postID %>>Submit</button>
+  </form>
+
+</div>
+<%- include("partials/footer.ejs") %>

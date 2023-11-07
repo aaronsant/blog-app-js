@@ -1,0 +1,39 @@
+<%- include("partials/header.ejs") %>
+
+<div class="homepage">
+<div class="p-5 mb-4 rounded-3 container homecontainer bg-transparent">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold brand">BlinkBlog</h1>
+      <p class="col-md-8 fs-4">Your Thoughts, Your Terms. Create, Share, and Blink - Your posts, your control, your online footprint, just for a moment. </p>
+      <p class="col-md-8 fs-4">Express yourself freely, knowing that your stories will shine brightly for a brief instant before fading into digital obscurity. Embrace the beauty of impermanence with BlinkBlog!</p>
+      <a href="#all-posts"><button class="btn btn-primary btn-lg" type="button">See Posts!</button></a>
+    </div>
+  </div>
+</div>
+<section id="all-posts">
+<div class="container py-3">
+    <% posts.forEach(function(post, index){  %>
+            <div class="card my-3" >
+                <div class="card-body">
+                  <h5 class="card-title"><%=post.title %></h5>
+                  <h6 class="card-subtitle mb-2 text-body-secondary"><%=post.author %> on <%=post.date %></h6>
+                  <p class="card-text"><%=post.text %></p>
+                 <form action="/viewpost" method="POST">
+                    <button type="submit" class="btn btn-info" name="postID" value="<%=index %>">Read More</button>
+                   </form>
+            
+                </div>
+              </div>
+    <% }) %>
+
+    <% if (locals.posts.length === 0) {%>
+        <div class="container d-flex flex-column justify-content-center">
+        <h4 class="py-3 align-self-center">There are no posts to see yet.</h4>
+        
+        <a class="unstyled-link align-self-center pb-3" href="/create" ><button type="button" class="btn btn-primary"><strong>Create First Post</strong></button></a>
+        </div>
+    <% } %>
+ </div>
+</section>
+
+<%- include("partials/footer.ejs") %>

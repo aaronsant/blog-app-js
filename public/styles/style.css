@@ -1,0 +1,23 @@
+.unstyled-link{
+    color: inherit;
+    text-decoration: inherit
+}
+
+.homepage{
+    background-image: url("/images/back.jpg");
+    background-size: cover;
+    color: whitesmoke;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+}
+.main{
+    background-color: whitesmoke ;
+}
+
+.navbar-brand{
+    font-family: 'Kanit', sans-serif;
+}
+
+.brand{
+    font-family: 'Kanit', sans-serif;
+}
+

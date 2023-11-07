@@ -1,0 +1,48 @@
+<%- include("partials/header.ejs") %>
+
+
+<div class="container py-5">
+    <div class="col-md-8">
+  
+        <article class="blog-post">
+          <h2 class="display-5 link-body-emphasis mb-1"><%=currentPost.title  %></h2>
+          <p class="blog-post-meta"><%=currentPost.date %> by <em><%=currentPost.author %></em></p>
+  
+          <hr>
+          <p><%=currentPost.text %></p>
+          <hr>
+        </article>
+        <div class="d-flex">
+        <form action="/update" method="POST">
+          <button type="submit" class="btn btn-secondary m-1" name="postID" value="<%=postID %>">Update</button>
+        </form>
+
+        <form action="/delete" method="POST">
+          <button type="button" class="btn btn-danger m-1" name="postID" value="<%=postID %>" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+        
+          <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Are You Sure?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                If you delete this post you will not be able to retrieve it later!
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </form>
+        </div>
+      </div>
+</div>
+
+
+
+<%- include("partials/footer.ejs") %>
